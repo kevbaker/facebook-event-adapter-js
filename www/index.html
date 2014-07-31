@@ -23,7 +23,7 @@
     <script src="cordova.js"></script>
 
     <!-- libaries -->
-    <script src="js/facebookConnectPluginCordova.js"></script>
+    <!--script src="js/facebookConnectPluginCordova.js"></script-->
     <script src="lib/angular-facebook/lib/angular-facebook.js"></script>
     <script src="lib/angular-facebook/lib/angular-facebook-phonegap.js"></script>
 
@@ -44,6 +44,7 @@
         var appId = "341560645995685"; //prompt("Enter FB Application ID", "");
           facebookConnectPlugin.browserInit(appId);
       };
+
       window.login = function () {
           facebookConnectPlugin.login( ["email"],
               function (response) { alert(JSON.stringify(response)) },
@@ -51,7 +52,7 @@
       };
 
       window.logout = function () {
-          facebookConnectPlugin.logout( 
+          facebookConnectPlugin.logout(
               function (response) { alert(JSON.stringify(response)) },
               function (response) { alert(JSON.stringify(response)) });
       };
@@ -59,6 +60,7 @@
       window.doAlert = function(msg){
         alert("message:"+msg);
       }
+
     </script>
   </body>
 
