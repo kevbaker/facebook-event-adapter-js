@@ -122,7 +122,7 @@
         "com.phonegap.plugins.facebookconnect": {
             "APP_ID": "341560645995685",
             "APP_NAME": "WT-Ab-Bootcamp",
-            "PACKAGE_NAME": "com.ionicframework.facebooksidemenu263046"
+            "PACKAGE_NAME": "com.tapestryd.apps.wt.ab-bootcamp"
         }
     },
     "dependent_plugins": {}

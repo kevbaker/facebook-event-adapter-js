@@ -17,9 +17,10 @@
           <input type="password" ng-model="loginData.password">
         </label>
         <label class="item">
-          <button class="button button-block button-positive" >Log in</button>
+          <button class="button button-block button-positive" ng-click="logout()">Log out</button>
         </label>
         <label class="item">
+          <div>facebookReady:{{facebookReady}}</div>
           <button class="button button-block button-positive" type="submit">Facebook Log in</button>
         </label>
       </div>

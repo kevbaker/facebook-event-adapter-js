@@ -1,34 +1,31 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, Facebook) {
-  // Form data for the login modal
-  $scope.loginData = {};
+  // Facebook Setup Begin ----------
 
+  $scope.facebookReady = Facebook.isReady();
+  $scope.$watch(function() {
+    return Facebook.isReady(); // This is for convenience, to notify if Facebook is loaded and ready to go.
+  }, function(newVal) {
+    $scope.facebookReady = newVal; // You might want to use this to disable/show/hide buttons and else
+  });
 
+  $scope.logout = function(){
+    window.logout();
+  };
 
-  // Facebook Setup Begin -----------
-
-  /**
-   * Watch for Facebook to be ready.
-   * There's also the event that could be used
-   */
-  $scope.$watch(
-    function() {
-      return Facebook.isReady();
-    },
-    function(newVal) {
-      if (newVal)
-        $scope.facebookReady = true;
-    }
-  );
-
-  /**
-   * Login
+   /**
+   * Login for lib/angular-facebook/lib/angular-facebook.js
    */
    $scope.doFacebookLogin = function() {
+     //window.doAlert("doFacebookLogin call");
+
+     window.login();
+      /*
      Facebook.login(function(response) {
       console.log("Facebook Login");
       console.log(response);
+      alert("login response:"+JSON.stringify(response));
       if (response.status == 'connected') {
         $scope.logged = true;
         //$scope.me();
@@ -40,6 +37,7 @@ angular.module('starter.controllers', [])
         }, 500);
       }
     });
+    */
    };
 
   // Facebook Setup End -------------
