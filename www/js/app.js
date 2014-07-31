@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic', 'starter.controllers'])
+angular.module('starter', ['ionic', 'starter.controllers','facebook'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -20,7 +20,26 @@ angular.module('starter', ['ionic', 'starter.controllers'])
   });
 })
 
+.config([
+    'FacebookProvider',
+    function(FacebookProvider) {
+     var myAppId = '341560645995685';
+
+     // You can set appId with setApp method
+     // FacebookProvider.setAppId('myAppId');
+
+     /**
+      * After setting appId you need to initialize the module.
+      * You can pass the appId on the init method as a shortcut too.
+      */
+     FacebookProvider.init(myAppId);
+
+    }
+  ])
+
 .config(function($stateProvider, $urlRouterProvider) {
+  //$FacebookProvider.init("341560645995685");
+
   $stateProvider
 
     .state('app', {

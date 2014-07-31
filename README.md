@@ -79,3 +79,6 @@ Create the `facebookConnectPlugin.js` file in your `www/js` directory from the [
 
 Review this project's src `www/index.html`, `www/app.js`, `www/js/controllers.js` and `www/templates/*` files for references
 
+## Notes
+
+* possibly use `bower install angular-facebook`

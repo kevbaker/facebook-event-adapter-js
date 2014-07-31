@@ -12,8 +12,13 @@
     <link href="css/ionic.app.css" rel="stylesheet">
     -->
 
+
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- libaries -->
+    <script src="js/facebookConnectPlugin.js"></script>
+    <script src="lib/angular-facebook/lib/angular-facebook.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -24,6 +29,9 @@
   </head>
 
   <body ng-app="starter">
+    <div id="fb-root">
     <ion-nav-view></ion-nav-view>
+    </div>
   </body>
+
 </html>

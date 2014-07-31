@@ -1,8 +1,45 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, Facebook) {
   // Form data for the login modal
   $scope.loginData = {};
+
+
+
+  // Facebook Setup Begin -----------
+
+  /**
+   * Watch for Facebook to be ready.
+   * There's also the event that could be used
+   */
+  $scope.$watch(
+    function() {
+      return Facebook.isReady();
+    },
+    function(newVal) {
+      if (newVal)
+        $scope.facebookReady = true;
+    }
+  );
+
+  /**
+   * Login
+   */
+   $scope.doFacebookLogin = function() {
+     Facebook.login(function(response) {
+      console.log("Facebook Login");
+      console.log(response);
+      if (response.status == 'connected') {
+        $scope.logged = true;
+        //$scope.me();
+        alert("logged in");
+      }
+    });
+   };
+
+  // Facebook Setup End -------------
+
+
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/facebook_login.html', {
@@ -33,14 +70,25 @@ angular.module('starter.controllers', [])
   };
 
   // Perform the login action when the user submits the login form
-  $scope.doFacebookLogin = function() {
+  $scope.doFacebookLoginOld = function() {
     console.log('Doing login', $scope.loginData);
+
+    /* NOTE: Not working because no access to the facebookConnectPlugin var
+    // check if running in a browser
+    if (!window.cordova) {
+      var appId = "341560645995685"; //prompt("Enter FB Application ID", "");
+      facebookConnectPlugin.browserInit(appId);
+    }
+    facebookConnectPlugin.login( ["email"],
+      function (response) { alert(JSON.stringify(response)) },
+      function (response) { alert(JSON.stringify(response)) });
+    */
 
     // Simulate a login delay. Remove this and replace with your login
     // code if using a login system
     $timeout(function() {
       $scope.closeLogin();
-    }, 1000);
+    }, 500);
   };
 })
 
