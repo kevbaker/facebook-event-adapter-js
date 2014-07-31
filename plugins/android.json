@@ -75,18 +75,18 @@
     },
     "installed_plugins": {
         "com.ionic.keyboard": {
-            "PACKAGE_NAME": "com.ionicframework.facebookblank191331"
+            "PACKAGE_NAME": "com.ionicframework.facebooksidemenu263046"
         },
         "org.apache.cordova.console": {
-            "PACKAGE_NAME": "com.ionicframework.facebookblank191331"
+            "PACKAGE_NAME": "com.ionicframework.facebooksidemenu263046"
         },
         "org.apache.cordova.device": {
-            "PACKAGE_NAME": "com.ionicframework.facebookblank191331"
+            "PACKAGE_NAME": "com.ionicframework.facebooksidemenu263046"
         },
         "com.phonegap.plugins.facebookconnect": {
             "APP_ID": "341560645995685",
             "APP_NAME": "WT-Ab-Bootcamp",
-            "PACKAGE_NAME": "com.ionicframework.facebookblank191331"
+            "PACKAGE_NAME": "com.ionicframework.facebooksidemenu263046"
         }
     },
     "dependent_plugins": {}
