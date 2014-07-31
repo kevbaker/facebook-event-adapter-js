@@ -32,7 +32,12 @@ angular.module('starter.controllers', [])
       if (response.status == 'connected') {
         $scope.logged = true;
         //$scope.me();
-        alert("logged in");
+        alert("logged in:"+JSON.stringify(response));
+        // Simulate a login delay. Remove this and replace with your login
+        // code if using a login system
+        $timeout(function() {
+          $scope.closeLogin();
+        }, 500);
       }
     });
    };
