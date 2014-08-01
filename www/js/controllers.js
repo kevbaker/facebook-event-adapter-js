@@ -1,25 +1,30 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicPopup) {
 
-  // Facebook Setup Begin ----------
-  $scope.logout = function(){
-    window.logoutFacebook();
-  };
-
-  // scope variable used to test scope in the event callback function below
+  // Scope variable used to test scope in the event callback function below
   $scope.controllerName = "AppCtrl";
 
   // Handle Facebook Login Complete event
   window.addEventListener('FACEBOOK_LOGIN_COMPLETE',
     function(e) {
       var msg = $scope.controllerName +" "+JSON.stringify(e.detail);
-        alert("FACEBOOK_LOGIN_COMPLETE from "+msg);
+
+        $ionicPopup.alert({
+           title: 'FACEBOOK_LOGIN_COMPLETE',
+           template: msg
+         });
+
       }, false);
 
   // Login to Facebook
   $scope.doFacebookLogin = function() {
     window.loginFacebook();
+  };
+
+  // Logout of Facebook
+  $scope.logout = function(){
+    window.logoutFacebook();
   };
 
   // Create the login modal that we will use later

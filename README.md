@@ -74,6 +74,11 @@ cordova plugin add https://github.com/phonegap/phonegap-facebook-plugin --variab
 
 Create the `facebookConnectPlugin.js` file in your `www/js` directory from the [following github source](https://raw.githubusercontent.com/Wizcorp/phonegap-facebook-plugin/master/www/js/facebookConnectPlugin.js).
 
+### Create Facebook Event Adapter
+
+Create the `facebook-event-adapater/facebook-event-adapater.js` in the `lib` directory. The Facebook Event Adapter JS
+handles broadcasting events from the Facebook Connect Plugin for a simple interface with Javascript frameworks without
+requiring deep framework integration.
 
 ### Create Facebook Login Code
 
@@ -81,4 +86,3 @@ Review this project's src `www/index.html`, `www/app.js`, `www/js/controllers.js
 
 ## Notes
 
-* possibly use `bower install angular-facebook`
