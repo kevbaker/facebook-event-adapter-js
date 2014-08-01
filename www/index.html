@@ -46,35 +46,31 @@
         //facebookConnectPlugin.browserInit(appId);
       };
 
-      window.onload = function(){
-        window.addEventListener('FACEBOOK_LOGIN_COMPLETE',
-          function(e) {
-              alert("index.FACEBOOK_LOGIN_COMPLETE: "+JSON.stringify(e.detail));
-            }, false);
-      };
-
-      window.login = function (errorHandler, sucessHander) {
-          //facebookConnectPlugin.login( ["email"],errorHandler, successHandler);
-           facebookConnectPlugin.login( ["email"],
-              function (response) {
-                  var event = new CustomEvent("FACEBOOK_LOGIN_COMPLETE",
-                      { detail: { response: response },
-                        bubbles: true, cancelable: true
-                      });
-                  window.dispatchEvent(event);
-                },
-              function (response) {
-                  alert("error: "+JSON.stringify(response))
-                  //var eventData = { 'FACEBOOK_LOGIN_COMPLETE' };
-                  //var event = new CustomEvent('FACEBOOK_LOGIN_ERROR', eventData);
-                  //window.dispatchEvent(eventData);
-                });
-      };
+      /*
+       * FB Login method
+       */
+       window.login = function () {
+        facebookConnectPlugin.login( ["email"],
+          function (response) {
+            var event = new CustomEvent("FACEBOOK_LOGIN_COMPLETE",
+              { detail: { response: response },
+                bubbles: true, cancelable: true
+              });
+            window.dispatchEvent(event);
+          },
+          function (response) {
+            var event = new CustomEvent("FACEBOOK_LOGIN_ERROR",
+              { detail: { response: response },
+                bubbles: true, cancelable: true
+              });
+            window.dispatchEvent(event);
+          });
+        };
 
       window.logout = function () {
-          facebookConnectPlugin.logout(
-              function (response) { alert(JSON.stringify(response)) },
-              function (response) { alert(JSON.stringify(response)) });
+        facebookConnectPlugin.logout(
+          function (response) { alert(JSON.stringify(response)) },
+          function (response) { alert(JSON.stringify(response)) });
       };
 
       window.doAlert = function(msg){
