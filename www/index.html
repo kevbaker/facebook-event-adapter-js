@@ -46,53 +46,27 @@
         //facebookConnectPlugin.browserInit(appId);
       };
 
-      window.onload=function(){
+      window.onload = function(){
         window.addEventListener('FACEBOOK_LOGIN_COMPLETE',
           function(e) {
               alert("index.FACEBOOK_LOGIN_COMPLETE: "+JSON.stringify(e.detail));
             }, false);
-
-        /*
-        var event = new CustomEvent(
-          "FACEBOOK_LOGIN_COMPLETE",
-            {
-              detail: {
-                message: "Hello World!",
-                time: new Date(),
-              },
-              bubbles: true,
-              cancelable: true
-              }
-            );
-        window.dispatchEvent(event);
-        */
-
       };
-
 
       window.login = function (errorHandler, sucessHander) {
           //facebookConnectPlugin.login( ["email"],errorHandler, successHandler);
            facebookConnectPlugin.login( ["email"],
               function (response) {
-                  //alert("success: "+JSON.stringify(response));
-                  var event = new CustomEvent(
-                    "FACEBOOK_LOGIN_COMPLETE",
-                      {
-                        detail: {
-                          response: response
-                          message: "Hello World!",
-                          time: new Date(),
-                        },
-                        bubbles: true,
-                        cancelable: true
-                        }
-                      );
+                  var event = new CustomEvent("FACEBOOK_LOGIN_COMPLETE",
+                      { detail: { response: response },
+                        bubbles: true, cancelable: true
+                      });
                   window.dispatchEvent(event);
                 },
               function (response) {
                   alert("error: "+JSON.stringify(response))
                   //var eventData = { 'FACEBOOK_LOGIN_COMPLETE' };
-                  //var event = new CustomEvent('FACEBOOK_LOGIN_COMPLETE', eventData);
+                  //var event = new CustomEvent('FACEBOOK_LOGIN_ERROR', eventData);
                   //window.dispatchEvent(eventData);
                 });
       };

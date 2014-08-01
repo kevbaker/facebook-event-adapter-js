@@ -14,9 +14,14 @@ angular.module('starter.controllers', [])
     window.logout();
   };
 
-   /**
+  /**
    * Login for lib/angular-facebook/lib/angular-facebook.js
    */
+  window.addEventListener('FACEBOOK_LOGIN_COMPLETE',
+    function(e) {
+        alert("controller.FACEBOOK_LOGIN_COMPLETE: "+JSON.stringify(e.detail));
+      }, false);
+
    $scope.doFacebookLogin = function() {
      //window.doAlert("doFacebookLogin call");
      /*
