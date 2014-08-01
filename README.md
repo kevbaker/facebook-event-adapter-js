@@ -82,7 +82,13 @@ requiring deep framework integration.
 
 ### Create Facebook Login Code
 
-Review this project's src `www/index.html`, `www/app.js`, `www/js/controllers.js` and `www/templates/*` files for references
+Review this project's src `www/index.html`, `www/app.js`, `www/js/controllers.js`,  `www/templates/*` and `www/lib/facebook-event-adapter/facebook-event-adapter.js` files for references
 
-## Notes
+## Methods
 
+* `window.loginFacebook()` - uses Phonegap Facebook Plugin login method. Returns the `FACEBOOK_LOGIN_COMPLETE` event with Facebook auth information.
+* `window.logoutFacebook()` - Uses Phonegap Facebook Plugin logout method.
+ 
+## Events
+
+* `FACEBOOK_LOGIN_COMPLETE` - Fired on successful login with the Facebook auth information as the event payload.
