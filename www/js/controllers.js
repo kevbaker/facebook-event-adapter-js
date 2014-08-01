@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
 
   // Facebook Setup Begin ----------
   $scope.logout = function(){
-    window.logout();
+    window.logoutFacebook();
   };
   $scope.monkey = "little ninja";
 
@@ -19,7 +19,7 @@ angular.module('starter.controllers', [])
       }, false);
 
    $scope.doFacebookLogin = function() {
-     window.login();
+     window.loginFacebook();
    };
 
   // Facebook Setup End -------------

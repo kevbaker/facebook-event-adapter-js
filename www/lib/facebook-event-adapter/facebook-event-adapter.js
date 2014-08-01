@@ -7,8 +7,9 @@
  *
  */
 
+
 // Login
-window.login = function () {
+window.loginFacebook = function () {
   facebookConnectPlugin.login( ["email","user_about_me","user_location"],
     function (response) {
       var event = new CustomEvent("FACEBOOK_LOGIN_COMPLETE",
@@ -27,7 +28,7 @@ window.login = function () {
   };
 
 // Logout
-window.logout = function () {
+window.logoutFacebook = function () {
   facebookConnectPlugin.logout(
       function (response) { alert(JSON.stringify(response)) },
       function (response) { alert(JSON.stringify(response)) }
