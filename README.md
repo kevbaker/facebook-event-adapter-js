@@ -86,7 +86,7 @@ Review this project's src `www/index.html`, `www/app.js`, `www/js/controllers.js
 
 ## Methods
 
-* `window.loginFacebook()` - uses Phonegap Facebook Plugin login method. Returns the `FACEBOOK_LOGIN_COMPLETE` event with Facebook auth information.
+* `window.loginFacebook()` - Uses Phonegap Facebook Plugin login method. Returns the `FACEBOOK_LOGIN_COMPLETE` event with Facebook auth information.
 * `window.logoutFacebook()` - Uses Phonegap Facebook Plugin logout method.
  
 ## Events
