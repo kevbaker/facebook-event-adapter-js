@@ -23,6 +23,7 @@
     <script src="cordova.js"></script>
 
     <!-- libaries -->
+    <script src="js/facebookConnectPlugin.js"></script>
     <!--script src="js/facebookConnectPluginCordova.js"></script-->
     <script src="lib/angular-facebook/lib/angular-facebook.js"></script>
     <script src="lib/angular-facebook/lib/angular-facebook-phonegap.js"></script>
@@ -35,20 +36,64 @@
   <body ng-app="starter">
 
 
-    <div id="fb-root">
+    <div id="app">
       <ion-nav-view></ion-nav-view>
     </div>
     <script>
 
       if (!window.cordova) {
-        var appId = "341560645995685"; //prompt("Enter FB Application ID", "");
-          facebookConnectPlugin.browserInit(appId);
+        //var appId = "341560645995685"; //prompt("Enter FB Application ID", "");
+        //facebookConnectPlugin.browserInit(appId);
       };
 
-      window.login = function () {
-          facebookConnectPlugin.login( ["email"],
-              function (response) { alert(JSON.stringify(response)) },
-              function (response) { alert(JSON.stringify(response)) });
+      window.onload=function(){
+        window.addEventListener('FACEBOOK_LOGIN_COMPLETE',
+          function(e) {
+              alert("index.FACEBOOK_LOGIN_COMPLETE: "+JSON.stringify(e.detail));
+            }, false);
+
+        /*
+        var event = new CustomEvent(
+          "FACEBOOK_LOGIN_COMPLETE",
+            {
+              detail: {
+                message: "Hello World!",
+                time: new Date(),
+              },
+              bubbles: true,
+              cancelable: true
+              }
+            );
+        window.dispatchEvent(event);
+        */
+
+      };
+
+
+      window.login = function (errorHandler, sucessHander) {
+          //facebookConnectPlugin.login( ["email"],errorHandler, successHandler);
+           facebookConnectPlugin.login( ["email"],
+              function (response) {
+                  //alert("success: "+JSON.stringify(response));
+                  var event = new CustomEvent(
+                    "FACEBOOK_LOGIN_COMPLETE",
+                      {
+                        detail: {
+                          message: "Hello World!",
+                          time: new Date(),
+                        },
+                        bubbles: true,
+                        cancelable: true
+                        }
+                      );
+                  window.dispatchEvent(event);
+                },
+              function (response) {
+                  alert("error: "+JSON.stringify(response))
+                  //var eventData = { 'FACEBOOK_LOGIN_COMPLETE' };
+                  //var event = new CustomEvent('FACEBOOK_LOGIN_COMPLETE', eventData);
+                  //window.dispatchEvent(eventData);
+                });
       };
 
       window.logout = function () {

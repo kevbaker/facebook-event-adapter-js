@@ -19,7 +19,12 @@ angular.module('starter.controllers', [])
    */
    $scope.doFacebookLogin = function() {
      //window.doAlert("doFacebookLogin call");
-
+     /*
+     window.addEventListener('FACEBOOK_LOGIN_COMPLETE',
+        function(response) {
+          alert("FACEBOOK_LOGIN_COMPLETE: "+JSON.stringify(response));
+          }, false);
+          */
      window.login();
       /*
      Facebook.login(function(response) {
