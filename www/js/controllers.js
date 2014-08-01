@@ -6,25 +6,21 @@ angular.module('starter.controllers', [])
   $scope.logout = function(){
     window.logoutFacebook();
   };
-  $scope.monkey = "little ninja";
 
-  /**
-   * Login
-   */
+  // scope variable used to test scope in the event callback function below
+  $scope.controllerName = "AppCtrl";
 
   // Handle Facebook Login Complete event
   window.addEventListener('FACEBOOK_LOGIN_COMPLETE',
     function(e) {
-        alert("controller.FACEBOOK_LOGIN_COMPLETE: "+$scope.monkey+" "+JSON.stringify(e.detail));
+      var msg = $scope.controllerName +" "+JSON.stringify(e.detail);
+        alert("FACEBOOK_LOGIN_COMPLETE from "+msg);
       }, false);
 
-   $scope.doFacebookLogin = function() {
-     window.loginFacebook();
-   };
-
-  // Facebook Setup End -------------
-
-
+  // Login to Facebook
+  $scope.doFacebookLogin = function() {
+    window.loginFacebook();
+  };
 
   // Create the login modal that we will use later
   $ionicModal.fromTemplateUrl('templates/facebook_login.html', {
@@ -52,28 +48,6 @@ angular.module('starter.controllers', [])
     $timeout(function() {
       $scope.closeLogin();
     }, 1000);
-  };
-
-  // Perform the login action when the user submits the login form
-  $scope.doFacebookLoginOld = function() {
-    console.log('Doing login', $scope.loginData);
-
-    /* NOTE: Not working because no access to the facebookConnectPlugin var
-    // check if running in a browser
-    if (!window.cordova) {
-      var appId = "341560645995685"; //prompt("Enter FB Application ID", "");
-      facebookConnectPlugin.browserInit(appId);
-    }
-    facebookConnectPlugin.login( ["email"],
-      function (response) { alert(JSON.stringify(response)) },
-      function (response) { alert(JSON.stringify(response)) });
-    */
-
-    // Simulate a login delay. Remove this and replace with your login
-    // code if using a login system
-    $timeout(function() {
-      $scope.closeLogin();
-    }, 500);
   };
 })
 
