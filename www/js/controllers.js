@@ -1,53 +1,25 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, Facebook) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+
   // Facebook Setup Begin ----------
-
-  $scope.facebookReady = Facebook.isReady();
-  $scope.$watch(function() {
-    return Facebook.isReady(); // This is for convenience, to notify if Facebook is loaded and ready to go.
-  }, function(newVal) {
-    $scope.facebookReady = newVal; // You might want to use this to disable/show/hide buttons and else
-  });
-
   $scope.logout = function(){
     window.logout();
   };
+  $scope.monkey = "little ninja";
 
   /**
-   * Login for lib/angular-facebook/lib/angular-facebook.js
+   * Login
    */
+
+  // Handle Facebook Login Complete event
   window.addEventListener('FACEBOOK_LOGIN_COMPLETE',
     function(e) {
-        alert("controller.FACEBOOK_LOGIN_COMPLETE: "+JSON.stringify(e.detail));
+        alert("controller.FACEBOOK_LOGIN_COMPLETE: "+$scope.monkey+" "+JSON.stringify(e.detail));
       }, false);
 
    $scope.doFacebookLogin = function() {
-     //window.doAlert("doFacebookLogin call");
-     /*
-     window.addEventListener('FACEBOOK_LOGIN_COMPLETE',
-        function(response) {
-          alert("FACEBOOK_LOGIN_COMPLETE: "+JSON.stringify(response));
-          }, false);
-          */
      window.login();
-      /*
-     Facebook.login(function(response) {
-      console.log("Facebook Login");
-      console.log(response);
-      alert("login response:"+JSON.stringify(response));
-      if (response.status == 'connected') {
-        $scope.logged = true;
-        //$scope.me();
-        alert("logged in:"+JSON.stringify(response));
-        // Simulate a login delay. Remove this and replace with your login
-        // code if using a login system
-        $timeout(function() {
-          $scope.closeLogin();
-        }, 500);
-      }
-    });
-    */
    };
 
   // Facebook Setup End -------------

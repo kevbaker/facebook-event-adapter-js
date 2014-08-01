@@ -39,45 +39,7 @@
     <div id="app">
       <ion-nav-view></ion-nav-view>
     </div>
-    <script>
-
-      if (!window.cordova) {
-        //var appId = "341560645995685"; //prompt("Enter FB Application ID", "");
-        //facebookConnectPlugin.browserInit(appId);
-      };
-
-      /*
-       * FB Login method
-       */
-       window.login = function () {
-        facebookConnectPlugin.login( ["email","user_about_me","user_location"],
-          function (response) {
-            var event = new CustomEvent("FACEBOOK_LOGIN_COMPLETE",
-              { detail: { response: response },
-                bubbles: true, cancelable: true
-              });
-            window.dispatchEvent(event);
-          },
-          function (response) {
-            var event = new CustomEvent("FACEBOOK_LOGIN_ERROR",
-              { detail: { response: response },
-                bubbles: true, cancelable: true
-              });
-            window.dispatchEvent(event);
-          });
-        };
-
-      window.logout = function () {
-        facebookConnectPlugin.logout(
-          function (response) { alert(JSON.stringify(response)) },
-          function (response) { alert(JSON.stringify(response)) });
-      };
-
-      window.doAlert = function(msg){
-        alert("message:"+msg);
-      }
-
-    </script>
+    <script src="lib/facebook-event-adapter/facebook-event-adapter.js"></script>
   </body>
 
 </html>
