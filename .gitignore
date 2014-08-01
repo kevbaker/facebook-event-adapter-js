@@ -1,2 +1,6 @@
 node_modules/
+<<<<<<< HEAD
 platforms/*
+=======
+platforms/
+>>>>>>> 0e84ce69578bc9e12b829f725b44392d5b8b4981
